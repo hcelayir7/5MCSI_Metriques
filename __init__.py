@@ -31,6 +31,12 @@ def meteo():
 def mongraphique():
     return render_template("graphique.html")
 
+@app.route('/extract-minutes/<date_string>')
+def extract_minutes(date_string):
+        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = date_object.minute
+        return jsonify({'minutes': minutes})
+
 @app.route('/commits/')
 def commits_graph():
     # Appel à l'API GitHub pour récupérer les données sur les commits
@@ -44,10 +50,8 @@ def commits_graph():
     for commit in data:
         # Extraire la date du commit
         commit_date = commit['commit']['author']['date']
-        # Convertir la date en objet datetime
-        date_object = datetime.strptime(commit_date, '%Y-%m-%dT%H:%M:%SZ')
         # Extraire la minute de la date du commit
-        minute = date_object.minute
+        minute = extract_minutes(commit_date)
         # Ajouter 1 au compteur de commits pour cette minute
         commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
 
