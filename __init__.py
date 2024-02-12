@@ -31,25 +31,7 @@ def meteo():
 def mongraphique():
     return render_template("graphique.html")
 
-@app.route('/commits/')
-def commits_graph():
 
-    response = urlopen('https://api.github.com/repos/hcelayir7/5MCSI_Metriques/commits')
-    data = response.json()
-
-    nombre_de_commits = {}
-
-    for commit in data:
-        # Extraire la date du commit
-        commit_date = commit['commit']['author']['date']
-        # Convertir la date en objet datetime
-        date_object = datetime.strptime(commit_date, '%Y-%m-%dT%H:%M:%SZ')
-        # Extraire la minute de la date du commit
-        minute = date_object.minute
-        # Ajouter 1 au compteur de commits pour cette minute
-        nombre_de_commits[minute] = nombre_de_commits.get(minute, 0) + 1
-
-    return jsonify(commits_per_minute)
   
 if __name__ == "__main__":
   app.run(debug=True)
