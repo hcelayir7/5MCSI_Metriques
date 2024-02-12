@@ -52,7 +52,7 @@ def commits_graph():
         commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
 
     # Retourner les données sous forme JSON
-    return jsonify(commits_per_minute)
+    return jsonify(minute)
   
 if __name__ == "__main__":
   app.run(debug=True)
