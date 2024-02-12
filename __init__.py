@@ -17,16 +17,16 @@ def formulairedecontact():
 
 @app.route('/paris/')
 def meteo():
-    response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
+    response = urlopen('https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsamples.openweathermap.org%2Fdata%2F2.5%2Fforecast%3Flat%3D0%26lon%3D0%26appid%3Dxxx&data=05%7C02%7Celawson4%40myges.fr%7C30939271ffac424e273a08dc2bdfa3f1%7Cc371d4f5b34f4b069e66517fed904220%7C0%7C0%7C638433486745400761%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=0ZYCDtEDjudI3uiqTJVDBUv8DnZsCimaXdlYdFMVcgk%3D&reserved=0')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
     for list_element in json_content.get('list', []):
         dt_value = list_element.get('dt')
-        temp_day_value = list_element.get('temp', {}).get('day') - 273.15 # Conversion de Kelvin en °c 
+        temp_day_value = list_element.get('main', {}).get('temp') - 273.15 # Conversion de Kelvin en °c
         results.append({'Jour': dt_value, 'temp': temp_day_value})
     return jsonify(results=results)
-
+  
 @app.route("/rapport/")
 def mongraphique():
     return render_template("graphique.html")
