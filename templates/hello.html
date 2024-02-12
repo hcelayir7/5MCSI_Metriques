@@ -14,15 +14,15 @@
            </style>
 </head>
 <body>
+           <div class="w3-panel w3-ios-dark-blue">
+                      
            <h1>Bienvenue sur votre projet Métriques</h1>
            
            <div class="w3-container">
            <h2>Ceci est le projet de : Hilmi Celayir</h2>
-           <div class="w3-panel w3-ios-dark-blue">
            <p>Si vous avez mis en ligne votre solution et si cette page d'accueil s'affiche dans votre navigateur alors <b>vous avez déjà gagné 4 points</b> sur votre note d'évaluation.</p>
            <p>Notions acquises lors de cette étape : Vous avez lors cette première étape apris à créer votre hébergement en ligne sur Alwaydata, installer une application, Forker un projet GitHUB et créer des Secrets qui seront utilisés lors de vos Commits pour mettre à jour votre site en ligne</p>
            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-           </div>
            </div>
 
            <div class="w3-container">           
@@ -77,7 +77,7 @@
            </xmp></code></pre></p>
            <p>Testez cette nouvelle route dans votre navigateur et observer le résultat.</p>    
            <p>- - - - - </p>
-           <b>Exercice 3 Bis : Les fichiers HTML</b>
+           <h2>Exercice 3 Bis : Les fichiers HTML</h2>
            <p>Objectif : Comprendre la philosophie des Frameworks</p>
            <p>Le Framework Flask nous impose de déposer tous les fichiers HTML dans le répertoire templates dédié à cet effet.
            Depuis GitHUB, nous allons donc créer et déposer dans le répertoire "templates" une page HTML qui sera accessible depuis la route suivante : https://{VOTRE_URL}/rapport/
@@ -107,7 +107,7 @@
            Nous avons également découvert que les Framework (cadre de travail) nous imposent une structure de travail où chaque élément doit être à sa place.
            </p>
            <p>- - - - - </p>
-           <b>Exercice 3 Ter : Transfert de données</b>
+           <h2>Exercice 3 Ter : Transfert de données</h2>
            <p>Mettons à présent ces valeurs sous la forme d'un graphique qui sera pour l'utilisateur bien plus agréable et facile à lire.
            Pour cela, nous devons utiliser les données de notre nouvelle API /rapport/ et les injecter dans notre fichier graphique.html.
            Nous allons utiliser une bibliothèque open source fournie par Google pour créer ce graphique.</p>
@@ -158,20 +158,27 @@
            Vous avez appris à récupérer des données issues d'une API externe (des données issues d'un serveur externe), les adapter à vos besoins et afin créer vos propres graphiques.</p>
            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
            </div>
-                      
-           <h3>Exercice 4 : Créer son histogramme (3 points)</h3>
+
+           <div class="w3-container">
+           <h2>Exercice 4 : Créer son histogramme (3 points)</h2>
            <p>Objectif : Devenir autonome dans la création de ses graphiques.</p>
            <p>A l'aide des graphiques disponibles dans la galerie open source de Google disponibles à l'adresse suivante</p> 
            <p>https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery?hl=fr
            créer un nouveau graphique à colonnes (un histogramme) afin de présenter les températures de Paris pour les 16 prochains jours.
            Ce nouveau graphique sera accessible sur votre site en ligne via le chemin suivant : https://{Votre URL}/histogramme/</p>
            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-           <h3>Exercice 5 : Customisation de votre page de contact (3 points) </h3>
+           </div>
+
+           <div class="w3-container">
+           <h2>Exercice 5 : Customisation de votre page de contact (3 points) </h2>
            <p>Objectif : Faites preuve de créativité...</p>
            <p>Reprenez l'exercice 2 et faites pointer à présent votre route "/contact/" vers un fichier HTML un peu plus élaboré (faites preuve de créativité). Dans ce formulaire l'utilisateur sera en mesure de pouvoir laisser son nom, son prénom et un message à votre attention.</p>
            <p>L'enregistrement des données ne sera pas opérationnel dans le cadre de cet exercice. Il s'agit juste ici de vous évaluer sur l'aspect esthétique de votre création. Les 3 points de cet exercice vous seront donc attribués sur la base du Design de votre œuvre (à la convenance de l'examinateur)</p>
            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
-           <h3>Exercice 6 : Combien de Commits pour ce projet ?  (4 points) </h3>
+           </div>
+
+           <div class="w3-container">
+           <h2>Exercice 6 : Combien de Commits pour ce projet ?  (4 points) </h2>
            <p>Objectif : Autonomie totale ...</p>
            <p><b>Toutes les solutions informatiques proposent aujourd'hui des API</b>. GitHUB lui-même propose des API pour toutes sortes de mesures</p>
            <p>Charge à vous de savoir les extraire et les adapter à vos besoins. Dans cet exercice, vous allez créer un graphique qui mesurera la quantité de Commits que vous avez effectués (minute par minute) pour réaliser ce projet</p>
@@ -188,6 +195,8 @@
                    return jsonify({'minutes': minutes})
            </xmp></code></pre></p>
            <p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
+           </div>
            <h2>FIN DU PROJET</h2>
+           </div>
 </body>
 </html>
