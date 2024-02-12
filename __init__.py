@@ -17,7 +17,7 @@ def formulairedecontact():
 
 @app.route('/paris/')
 def meteo():
-    response = urlopen('https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsamples.openweathermap.org%2Fdata%2F2.5%2Fforecast%3Flat%3D0%26lon%3D0%26appid%3Dxxx&data=05%7C02%7Celawson4%40myges.fr%7C30939271ffac424e273a08dc2bdfa3f1%7Cc371d4f5b34f4b069e66517fed904220%7C0%7C0%7C638433486745400761%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=0ZYCDtEDjudI3uiqTJVDBUv8DnZsCimaXdlYdFMVcgk%3D&reserved=0')
+    response = urlopen('https://samples.openweathermap.org/data/2.5/forecast?lat=0&lon=0&appid=xxx')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
@@ -28,35 +28,11 @@ def meteo():
     return jsonify(results=results)
   
 @app.route("/rapport/")
-def mongraphique():
-    return render_template("graphique.html")
+def monhistogramme():
+    return render_template("histogramme.html")
 
-@app.route('/extract-minutes/<date_string>')
-def extract_minutes(date_string):
-        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-        minutes = date_object.minute
-        return jsonify({'minutes': minutes})
 
-@app.route('/commits/')
-def commits_graph():
-    # Appel à l'API GitHub pour récupérer les données sur les commits
-    response = urlopen('https://api.github.com/repos/hcelayir7/5MCSI_Metriques/commits')
-    data = response.json()
 
-    # Initialisation du dictionnaire pour stocker le nombre de commits par minute
-    commits_per_minute = {}
-
-    # Parcourir les données des commits
-    for commit in data:
-        # Extraire la date du commit
-        commit_date = commit['commit']['author']['date']
-        # Extraire la minute de la date du commit
-        minute = extract_minutes(commit_date)
-        # Ajouter 1 au compteur de commits pour cette minute
-        commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
-
-    # Retourner les données sous forme JSON
-    return jsonify(minute)
   
 if __name__ == "__main__":
   app.run(debug=True)
