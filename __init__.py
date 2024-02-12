@@ -34,14 +34,12 @@ def mongraphique():
 
 @app.route('/commits/')
 def commits_graph():
-    # Appel à l'API GitHub pour récupérer les données sur les commits
+
     response = requests.get('https://api.github.com/repos/hcelayir7/5MCSI_Metriques/commits')
     data = response.json()
 
-    # Initialisation du dictionnaire pour stocker le nombre de commits par minute
-    commits_per_minute = {}
+    nombre_de_commits = {}
 
-    # Parcourir les données des commits
     for commit in data:
         # Extraire la date du commit
         commit_date = commit['commit']['author']['date']
@@ -52,7 +50,6 @@ def commits_graph():
         # Ajouter 1 au compteur de commits pour cette minute
         commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
 
-    # Retourner les données sous forme JSON
     return jsonify(commits_per_minute)
   
 if __name__ == "__main__":
