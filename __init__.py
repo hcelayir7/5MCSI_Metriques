@@ -34,7 +34,7 @@ def mongraphique():
 @app.route('/commits/')
 def commits_graph():
     
-    response = requests.get('https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits')
+    response = requests.get('https://api.github.com/hcelayir7/5MCSI_Metriques/commits')
     data = response.json()
   
     nbrcommits = {}
