@@ -1,9 +1,42 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Histogramme</title>
- </head>  
+<head>
+<title>Histogramme</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    // Récupérer les données JSON via une requête HTTP
+    fetch('https://hcelayir07.alwaysdata.net/paris/')
+    .then(response => response.json())
+    .then(data => {
+      // Formatter les données dans le format requis par Google Charts
+      var chartData = [['Date', 'Température']];
+      data.results.forEach(item => {
+        var date = new Date(item.Jour * 1000);
+        chartData.push([date.toLocaleDateString(), item.temp]);
+      });
+
+      var dataTable = google.visualization.arrayToDataTable(chartData);
+
+      var options = {
+        title: 'Température à Paris',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      chart.draw(dataTable, options);
+    })
+    .catch(error => console.error('Erreur lors de la récupération des données :', error));
+  }
+</script>
+</head>
 <body>
-    <h2>Mon Histogramme</h2>
+  <h2>Mon Histogramme</h2>
+  <div id="curve_chart" style="width: 900px; height: 500px"></div>
 </body>
 </html>
+
