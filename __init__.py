@@ -48,7 +48,7 @@ def commits_graph():
         # Extraire la minute de la date du commit
         minute = date_object.minute
         # Ajouter 1 au compteur de commits pour cette minute
-        commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1
+        nombre_de_commits[minute] = nombre_de_commits.get(minute, 0) + 1
 
     return jsonify(commits_per_minute)
   
