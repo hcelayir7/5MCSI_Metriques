@@ -4,7 +4,6 @@ from flask import json
 from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
-import requests
                                                                                                                                        
 app = Flask(__name__)                                                                                                                  
                                                                                                                                        
@@ -35,7 +34,7 @@ def mongraphique():
 @app.route('/commits/')
 def commits_graph():
 
-    response = requests.get('https://api.github.com/repos/hcelayir7/5MCSI_Metriques/commits')
+    response = urlopen('https://api.github.com/repos/hcelayir7/5MCSI_Metriques/commits')
     data = response.json()
 
     nombre_de_commits = {}
